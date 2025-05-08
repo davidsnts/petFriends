@@ -31,7 +31,7 @@ export function Home() {
           />
           <div className="w-full">{item.title}</div>
           <div className="flex w-full flex-col gap-4 mt-3">
-            <span className="font-bold">{item.price}</span>
+            <span className="font-bold">{item.price.toLocaleString("pt-BR", {style:'currency', currency:'BRL'})}</span>
             <span className="text-center bg-green-950 rounded-md text-white font-bold p-2">
               Adicionar ao carrinho
             </span>
