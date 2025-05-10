@@ -1,58 +1,64 @@
-import { FiShoppingCart } from "react-icons/fi";
+import {
+  AiOutlineArrowRight,
+  AiOutlineMinus,
+  AiOutlinePlus,
+} from "react-icons/ai";
 
 export function Cart() {
   return (
-    <main>
-      <div className="m-10 grid sm:grid-cols-1 md:grid-cols-2   gap-5 justify-around ">
-        <div>
-          {" "}
-          <div>
-            <section className="flex place-items-center gap-4 text-2xl text-gray-600">
-              <img
-                src="https://sujeitoprogramador.com/wp-content/uploads/2023/06/racao1.png"
-                className="w-[125px] h-[125px]"
-                alt=""
-              />
-              <h1 className="font-bold ">Ração extra grande 1234</h1>
-              <span>
-                Unid: <span className="font-bold ">R$ 45,00</span>
-              </span>
-              <div>
-                <div className="flex">
-                  <button className="bg-red-500  w-7 rounded-l-xl text-white font-bold text-xl cursor-pointer">
-                    {"-"}
-                  </button>{" "}
-                  <span className="text-xl font-bold text-gray-500 border-gray-400 border-1 px-1 m-0 ">3</span>{" "}
-                  <button className="bg-green-700  w-7 rounded-r-xl text-white font-bold text-xl cursor-pointer">
-                    {"+"}
-                  </button>
-                </div>
-              </div>
-            </section>{" "}
-            <hr className="h-1 bg-gray-300 border-0 rounded-xs mt-3" />
-          </div>
-        </div>
-        <div className="bg-yellow-300 p-5 rounded-2xl ">
-          <div className="flex flex-col gap-3">
-            <h1 className="text-2xl font-bold uppercase">
-              Resumo da sua compra
-            </h1>
-            <span className="align-middle flex items-center gap-2">Quantidade de itens: <span className="font-bold text-2xl">3</span></span>
-            <span className="align-middle flex items-center gap-2">Valor total do carrinho: <span className="font-bold text-2xl"> R$ 145,00</span></span>
+    <main className="min-h-[100vh-70px]  p-6 flex justify-center items-start">
+      <div className="w-full max-w-3xl p-8 rounded-2xl shadow-lg space-y-12">
+        <h1 className="text-3xl font-bold text-center text-red-600 uppercase">
+          Itens no Carrinho <span className="text-gray-700 font-normal">3</span>
+        </h1>
 
-            <div>
-              <input
-                type="text"
-                name=""
-                className="bg-white p-3 rounded-l-xl"
-                id=""
-                placeholder="Valor do desconto"
-              />
-              <button className="bg-red-500 text-white font-bold p-3 rounded-r-xl">
-                Aplicar
+        {/* Produto */}
+        <section>
+          <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl shadow-sm">
+            <img
+              src="https://sujeitoprogramador.com/wp-content/uploads/2023/06/racao1.png"
+              className="w-[100px] h-[100px] object-contain"
+              alt="Ração"
+            />
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-gray-800">Ração extra grande 1234</h2>
+              <p className="text-gray-600 text-lg">
+                Un <span className="font-semibold">R$ 45,00</span>
+              </p>
+            </div>
+            <div className="flex items-center">
+              <button className="bg-red-600 w-8 h-8 rounded-l text-white flex justify-center items-center">
+                <AiOutlineMinus />
+              </button>
+              <span className="px-3 font-semibold text-gray-700">3</span>
+              <button className="bg-red-600 w-8 h-8 rounded-r text-white flex justify-center items-center">
+                <AiOutlinePlus />
               </button>
             </div>
           </div>
+        </section>
+
+        <div className="space-y-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-xl text-gray-800 flex items-center gap-3">
+              <span>Total no carrinho</span>
+              <span className="font-bold text-red-600">R$ 145,00</span>
+            </div>
+            <div className="flex w-full md:w-auto">
+              <input
+                type="text"
+                className="p-3 rounded-l-lg border border-gray-400 bg-white"
+                placeholder="Tem um cupom?"
+              />
+              <button className="px-4 bg-red-600 text-white font-bold rounded-r-lg">
+                <AiOutlineArrowRight size={20} />
+              </button>
+            </div>
+          </div>
+
+          <button className="bg-red-600 hover:bg-red-700 transition text-white font-bold py-3 rounded-lg w-full uppercase">
+            Finalizar Compra
+          </button>
         </div>
       </div>
     </main>

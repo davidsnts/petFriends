@@ -3,19 +3,21 @@ import { FiShoppingCart } from "react-icons/fi";
 
 export function Header() {
   return (
-    <div className="p-4 bg-green-950 ">
-      <div className="flex justify-between mx-10">
-        <Link
-          to="/"
-          className="font-bold text-yellow-300 border-b-2  text-3xl dashed"
-        >
-          Pet<span className="text-white font-bold">Friend's</span>
+    <header className="bg-green-950 p-4 shadow-md">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
+        
+        <Link to="/" className="text-3xl font-extrabold text-yellow-300">
+          Pet<span className="text-white">Friend's</span>
         </Link>
+
+        
         <Link to="/cart" className="relative">
-          <FiShoppingCart size={36} className="text-white " />{" "}
-          <span className="absolute -top-3 -right-3 bg-yellow-300 p-1 rounded-full px-2.5 font-bold text-red-500 text-2sm ">4</span>{" "}
+          <FiShoppingCart size={32} className="text-white" />
+          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
+            4
+          </span>
         </Link>
       </div>
-    </div>
+    </header>
   );
 }

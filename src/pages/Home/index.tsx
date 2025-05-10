@@ -19,22 +19,33 @@ export function Home() {
     }
     getProducts();
   }, []);
-  console.log(products);
+
   return (
-    <main className="grid max-w-7xl grid-cols-1 h-full md:grid-cols-2 lg:grid-cols-4 mx-auto place-items-center gap-y-10 gap-x-16 p-4">
+    <main className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 min-h-[80vh]">
       {products.map((item) => (
-        <section key={item.id} className="w-[300px] flex flex-col justify-center items-center border-gray-300  border-2 rounded-2xl p-5">
+        <section
+          key={item.id}
+          className="bg-white shadow-md hover:shadow-lg transition rounded-2xl overflow-hidden flex flex-col items-center p-4"
+        >
           <img
             src={item.cover}
-            className="w-[300px] h-[300px]"
-            alt=""
+            alt={item.title}
+            className="w-full h-56 object-cover rounded-lg"
           />
-          <div className="w-full">{item.title}</div>
-          <div className="flex w-full flex-col gap-4 mt-3">
-            <span className="font-bold">{item.price.toLocaleString("pt-BR", {style:'currency', currency:'BRL'})}</span>
-            <span className="text-center bg-green-950 rounded-md text-white font-bold p-2">
-              Adicionar ao carrinho
+          <div className="w-full mt-4 text-center">
+            <h2 className="text-lg font-semibold text-gray-800">{item.title}</h2>
+            <p className="mt-1 text-gray-600 text-sm line-clamp-2">{item.description}</p>
+          </div>
+          <div className="w-full mt-4 flex flex-col gap-2 items-center">
+            <span className="text-xl font-bold text-green-700">
+              {item.price.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+              })}
             </span>
+            <button className="w-full bg-green-950 hover:bg-green-800 transition text-white font-bold py-2 rounded-md">
+              Adicionar ao carrinho
+            </button>
           </div>
         </section>
       ))}
