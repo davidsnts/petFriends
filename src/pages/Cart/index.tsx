@@ -7,10 +7,24 @@ import {
 } from "react-icons/ai";
 import { CartContext } from "../../context/cartContext";
 import { Link } from "react-router";
+import toast from "react-hot-toast";
 
 export function Cart() {
   const { cartItems, addToCart, RemoveToCart, totalItems, totalPrice } =
     useContext(CartContext);
+
+  function handleFinalizarCompra() {
+    toast.success("Compra finalizada com sucesso!", {
+      style: {
+        background: "#333",
+        color: "#fff",
+      },
+      iconTheme: {
+        primary: "#4CAF50",
+        secondary: "#fff",
+      },
+    });
+  }
   return (
     <main className="min-h-[100vh-70px]  p-6 flex justify-center items-start">
       <div className="w-full max-w-3xl p-8 rounded-2xl shadow-lg space-y-12">
@@ -85,9 +99,14 @@ export function Cart() {
             </div>
           </div>
 
-          <button className="bg-red-600 hover:bg-red-700 transition text-white font-bold py-3 rounded-lg w-full uppercase">
-            Finalizar Compra
-          </button>
+          {totalItems > 0 && (
+            <button
+              onClick={handleFinalizarCompra}
+              className="bg-red-600 hover:bg-red-700 transition text-white font-bold py-3 rounded-lg w-full uppercase"
+            >
+              Finalizar Compra
+            </button>
+          )}
           <Link
             to="/"
             className="text-center text-gray-600 hover:text-red-600 transition flex items-center gap-2 font-bold float-end"

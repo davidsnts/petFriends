@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { CartContext } from "../../context/cartContext";
+import toast from "react-hot-toast";
 
 export interface productProps {
   id: number;
@@ -25,6 +26,16 @@ export function Home() {
   }, []);
 
   async function handleAddToCart(product: productProps) {
+    toast.success("Produto adicionado ao carrinho!", {
+      style: {
+        background: "#333",
+        color: "#fff",
+      },
+      iconTheme: {
+        primary: "#4CAF50",
+        secondary: "#fff",
+      },
+    });
     await addToCart(product);
   }
 
