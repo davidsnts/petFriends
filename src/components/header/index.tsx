@@ -1,7 +1,10 @@
 import { Link } from "react-router";
 import { FiShoppingCart } from "react-icons/fi";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 
 export function Header() {
+  const { totalItems } = useContext(CartContext);
   return (
     <header className="bg-green-950 p-4 shadow-md">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
@@ -14,7 +17,7 @@ export function Header() {
         <Link to="/cart" className="relative">
           <FiShoppingCart size={32} className="text-white" />
           <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
-            4
+            {totalItems}
           </span>
         </Link>
       </div>

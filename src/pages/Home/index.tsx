@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { CartContext } from "../../context/cartContext";
 
-interface productProps {
+export interface productProps {
   id: number;
   title: string;
   description: string;
   price: number;
   cover: string;
+  amount: number;
+  total: number;
 }
 
 export function Home() {
   const [products, setProducts] = useState<productProps[]>([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     async function getProducts() {
@@ -19,6 +23,10 @@ export function Home() {
     }
     getProducts();
   }, []);
+
+  async function handleAddToCart(product: productProps) {
+    await addToCart(product);
+  }
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 min-h-[80vh]">
@@ -30,7 +38,7 @@ export function Home() {
           <img
             src={item.cover}
             alt={item.title}
-            className="w-full h-56 object-cover rounded-lg"
+            className="w-full sm:h-35 md:h-45 object-cover rounded-lg"
           />
           <div className="w-full mt-4 text-center">
             <h2 className="text-lg font-semibold text-gray-800">{item.title}</h2>
@@ -43,7 +51,7 @@ export function Home() {
                 currency: "BRL",
               })}
             </span>
-            <button className="w-full bg-green-950 hover:bg-green-800 transition text-white font-bold py-2 rounded-md">
+            <button onClick={() => handleAddToCart(item)} className="w-full bg-green-950 hover:bg-green-800 transition text-white font-bold py-2 rounded-md">
               Adicionar ao carrinho
             </button>
           </div>
